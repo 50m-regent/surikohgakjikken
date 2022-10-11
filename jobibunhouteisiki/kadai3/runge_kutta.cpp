@@ -7,7 +7,7 @@ double uexact(double t) {
 }
 
 double runge_kutta(double (*f)(double , double), double u, double dt, double start, double end) {
-    for (double t = start; t <= end + 1e-7; t += dt) {
+    for (double t = start; t < end; t += dt) {
         double f1 = f(t, u);
         double f2 = f(t + dt / 2.0, u + f1 * dt / 2.0);
         double f3 = f(t + dt / 2.0, u + f2 * dt / 2.0);
@@ -29,7 +29,7 @@ double f(double t, double u) {
 
 int main() {
     double start = 0, end = 1;
-    for (int n = 1; n < 20; n++) {
+    for (int n = 1; n < 1e7; n *= 2) {
         double dt = 1.0 / n;
         double u = runge_kutta(f, 1, dt, start, end);
         std::cout<<std::fixed<<std::setprecision(16)<<dt<<" "<<E(u, uexact(end))<<std::endl;
