@@ -1,0 +1,92 @@
+\documentclass[a4j, titlepage]{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath,ascmac,amsthm}
+\usepackage{bm}
+\usepackage{algorithm,algorithmic}
+\usepackage{listings}
+\lstset{
+    language={C},
+    basicstyle={\small\ttfamily},
+    identifierstyle={\small},
+    commentstyle={\small\itshape},
+    keywordstyle={\small\bfseries},
+    ndkeywordstyle={\small},
+    stringstyle={\small\ttfamily},
+    frame={tb},
+    breaklines=true,
+    columns=[l]{fullflexible},
+    numbers=left,
+    xrightmargin=0zw,
+    xleftmargin=3zw,
+    numberstyle={\scriptsize},
+    stepnumber=1,
+    numbersep=1zw,
+    lineskip=-0.5ex
+}
+\renewcommand{\lstlistingname}{コード}
+\renewcommand{\lstlistlistingname}{コード目次}
+
+\title{
+    数理工学実験レポート \\
+    常微分方程式の数値解法 \\
+    \large{実験日: 10月11, 17, 18, 24日} \\
+    \large{実験場所: 工学部総合校舎 数理計算機室}
+}
+\author{情報学科2回生 平田 蓮（学籍番号 1029342830）}
+
+\begin{document}
+\maketitle
+
+\section{目的}
+    多くの数理モデルには、微分方程式が現れる。
+    これの解を解析的に得ることは一般的には難しいため、
+    数値計算でその近似解求めるためのアルゴリズムを学習する。
+
+\section{原理}
+    本章では、続く課題で用いるアルゴリズムについて述べる。
+
+    \subsection{オイラー法}
+        以下の関数を考える。
+
+        \begin{equation}
+            \frac{\mathrm{d}u}{\mathrm{dt}}(t) = f(t, u(t)), \ u(0) = u_0 \label{equ:diff}
+        \end{equation}
+
+        この式の両辺を$t$について、$[t_a, t_b]$の範囲で積分すると、
+        
+        \begin{equation*}
+            u(t_b) - u(t_a) = \int^{t_b}_{t_a}f(t, u(t))\mathrm{d}t
+        \end{equation*}
+
+        を得る。$\Delta t = t_b - t_a$とすると、
+        範囲内の積分を幅$\Delta t$、高さ$f(t_a, u(t_a))$の
+        長方形の面積で近似でき、
+
+        \begin{alignat*}{2}
+            & u(t_b) - u(t_a) & \ \approx \ & f(t_a, u(t_a))\Delta t \\
+            \rightarrow \ & u(t_b) & \ \approx \ & u(t_a) + f(t_a, u(t_a))\Delta t
+        \end{alignat*}
+
+        と書ける。ここで$(a, b)$を$(n, n + 1)$に置き換え、
+        さらに$u(t_n)$を$u_n$に書き換えると、
+
+        \begin{equation}
+            u_{n + 1} = u_n + f(t_n, u_n)\Delta t
+        \end{equation}
+
+        を得る。この式を$n$に対して繰り返し適用することで、
+        式(\ref{equ:diff})を満たす関数を数値計算することができる。
+        積分を近似する際に$t_a$での値を用いたため、これは前進オイラー法を呼ばれる。
+        一方、$t_b$を用いても近似ができるが、こちらは後進オイラー法と呼ばれ、
+        前進オイラー法と同様に導かれる次式で表される。
+
+        \begin{equation*}
+            u_{n + 1} =  u_n + f(t_{n + 1}, u_{n + 1})\Delta t
+        \end{equation*}
+
+\begin{thebibliography}{99}
+    \bibitem{text}{
+        実験演習ワーキンググループ, ``数理工学実験 2022年度版'', 京都大学工学部情報学科数理工学コース
+    }
+\end{thebibliography}
+\end{document}

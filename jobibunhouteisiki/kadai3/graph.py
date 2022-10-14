@@ -31,7 +31,7 @@ if __name__ == '__main__':
     plt.plot(t, 0.7 * t ** 3, zorder=0, color='grey', linestyle='-.', label='$\Theta ((\Delta t)^3)$')
     plt.plot(t, 0.01 * t ** 4, zorder=0, color='grey', linestyle=':', label='$\Theta ((\Delta t)^4)$')
     
-    plt.xlabel('$\Delta t$ [s]')
+    plt.xlabel('$\Delta t$')
     plt.ylabel('$E$', rotation=0)
     
     plt.xscale('log')
