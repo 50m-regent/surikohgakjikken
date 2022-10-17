@@ -2,13 +2,13 @@
 #include <iomanip>
 #include <cmath>
 
-#define ALPHA 2.0
-#define BETA 1.0
-#define U0 1.0
+constexpr double alpha = 2;
+constexpr double beta = 1;
+constexpr double u0 = 1;
 
 double uexact(double t) {
-    double C = U0 - BETA / ALPHA;
-    return C * exp(-ALPHA * t) + BETA / ALPHA;
+    double C = u0 - beta / alpha;
+    return C * exp(-alpha * t) + beta / alpha;
 }
 
 void solve(double (*f)(double , double), double u, double dt, double start, double end) {
@@ -25,7 +25,7 @@ void solve(double (*f)(double , double), double u, double dt, double start, doub
 }
 
 double f(double t, double u) {
-    return -ALPHA * u + BETA;
+    return -alpha * u + beta;
 }
 
 int main(int argc, char *argv[]) {

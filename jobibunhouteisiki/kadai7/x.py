@@ -19,27 +19,18 @@ def readfile(path):
 
 
 if __name__ == '__main__':
-    t = np.linspace(0, 2)
-    a = 10
-    u0 = 1
-    b = 1
-    C = u0 - b / a
-    plt.plot(t, C * np.exp(-a * t) + b / a, label='$u(t)$')
-    
-    for dt in [0.1, 0.3, 0.5]:
-        plt.plot(*readfile(f'crank{str(dt)[2:]}.txt'), label=f'$\Delta t={dt}$')
+    plt.plot(*readfile('x.txt'))
     
     plt.xlabel('$t$')
-    plt.ylabel('$u$', rotation=0)
+    plt.ylabel('$x$', rotation=0)
     
     # plt.xscale('log')
     # plt.yscale('log')
     
-    plt.xlim(0, 5)
-    # splt.ylim(, 5)
+    plt.xlim(0, 100)
+    # plt.ylim(-3, 3)
     
-    plt.legend()
+    # plt.legend()
     
-    plt.savefig('crank.eps')
-    # plt.show()
+    plt.savefig('x.eps')
     

@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.141592653-p4.0.0-220214-2.6 (utf8.euc) (TeX Live 2022) (preloaded format=platex 2022.10.3)  12 OCT 2022 23:27
+This is e-pTeX, Version 3.141592653-p4.0.0-220214-2.6 (utf8.euc) (TeX Live 2022) (preloaded format=platex 2022.10.3)  17 OCT 2022 15:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -280,10 +280,10 @@ LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 Here is how much of TeX's memory you used:
  3837 strings out of 478724
  57787 string characters out of 5858392
- 555895 words of memory out of 5000000
+ 554895 words of memory out of 5000000
  22238 multiletter control sequences out of 15000+600000
  486530 words of font info for 104 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  55i,8n,62p,217b,261s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on report.dvi (2 pages, 3876 bytes).
+Output written on report.dvi (2 pages, 3348 bytes).

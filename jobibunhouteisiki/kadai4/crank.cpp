@@ -2,8 +2,8 @@
 #include <iomanip>
 #include <cmath>
 
-#define ALPHA 10.0
-#define BETA 1.0
+constexpr double alpha = 10;
+constexpr double beta = 1;
 
 void crank(double (*f)(double , double), double u, double dt, double start, double end) {
     std::cout<<std::fixed<<std::setprecision(16);
@@ -25,7 +25,7 @@ void crank(double (*f)(double , double), double u, double dt, double start, doub
 }
 
 double f(double t, double u) {
-    return -ALPHA * u + BETA;
+    return -alpha * u + beta;
 }
 
 int main(int argc, char *argv[]) {
