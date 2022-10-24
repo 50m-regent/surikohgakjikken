@@ -10,7 +10,8 @@ double runge_kutta(
     int N,
     double dt,
     double start,
-    double end
+    double end,
+    double calc_t
 ) {
     double t;
     double Rx, Ry;
@@ -31,10 +32,12 @@ double runge_kutta(
             x[i] += (f1 + 2 * f2 + 2 * f3 + f4) * dt / 6.0;
         }
 
-        Rsum += sqrt(Rx * Rx + Ry * Ry) * dt;
+        if (t >= calc_t) {
+            Rsum += sqrt(Rx * Rx + Ry * Ry) * dt;
+        }
     }
 
-    return Rsum / (end - start);
+    return Rsum / (end - calc_t);
 }
 
 double omega(int i, int N) {
@@ -48,7 +51,7 @@ double f(double x, int i, double K, int N, double Rx, double Ry) {
 void calculate_Rs(int N) {
     std::cout<<std::fixed<<std::setprecision(16);
 
-    const double start = 50, end = 100, dt = 0.01;
+    const double start = 0, end = 100, calc_t = 50, dt = 0.01;
     std::vector<double> x(N);
     for (int i = 0; i < N; i++) {
         double y = 2 * M_PI / N * (i - 1);
@@ -56,7 +59,7 @@ void calculate_Rs(int N) {
     }
 
     for (double K = 1; K <= 3 + 1e-7; K += 0.1) {
-        const double R = runge_kutta(f, x, K, N, dt, start, end);
+        const double R = runge_kutta(f, x, K, N, dt, start, end, calc_t);
         std::cout<<K<<" "<<R<<std::endl;
     }
 }

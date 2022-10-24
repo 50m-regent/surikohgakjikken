@@ -22,7 +22,7 @@ if __name__ == '__main__':
     for dt, num in [[0.1, '1'], [0.01, '01'], [0.001, '001'], [0.0001, '0001']]:
         plt.plot(*readfile(f'solve{num}.txt'), label=f'$\Delta t={dt}$')
         
-    t = np.linspace(0, 20)
+    t = np.linspace(0, 20, 1000)
     a = 2
     u0 = 1
     b = 1
@@ -35,7 +35,7 @@ if __name__ == '__main__':
     # plt.xscale('log')
     # plt.yscale('log')
     
-    plt.xlim(0, 20)
+    plt.xlim(0, 15)
     plt.ylim(-3, 3)
     
     plt.legend()

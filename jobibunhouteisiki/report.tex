@@ -1,6 +1,6 @@
 \documentclass[a4j, titlepage]{jsarticle}
 \usepackage[dvipdfmx]{graphicx}
-\usepackage{amsmath,ascmac,amsthm}
+\usepackage{amsmath,ascmac,amsthm, amssymb}
 \usepackage{bm}
 \usepackage{algorithm,algorithmic}
 \usepackage{listings}
@@ -26,16 +26,42 @@
 \renewcommand{\lstlistingname}{コード}
 \renewcommand{\lstlistlistingname}{コード目次}
 
-\title{
-    数理工学実験レポート \\
-    常微分方程式の数値解法 \\
-    \large{実験日: 10月11, 17, 18, 24日} \\
-    \large{実験場所: 工学部総合校舎 数理計算機室}
-}
-\author{情報学科2回生 平田 蓮（学籍番号 1029342830）}
+\numberwithin{equation}{section}
+\setcounter{tocdepth}{3}
 
 \begin{document}
-\maketitle
+\begin{titlepage}
+    \begin{center}
+        {\Large 数理工学実験 課題レポート}
+
+        \vspace*{180truept}
+
+        {\Huge 常微分方程式の数値解法}
+
+        \vspace{160truept}
+
+        {\Large 情報学科2回生 平田蓮}
+
+        \vspace{10truept}
+
+        {\large 学生番号: 1029342830}
+
+        \vspace{60truept}
+
+        {\large 実験日: 10月11, 17, 18, 24日}
+
+        \vspace{10truept}
+
+        {\large 実験場所: 京都大学工学部総合校舎数理計算機室}
+
+        \vspace{60truept}
+
+        {\large 10月31日 提出}
+    \end{center}
+\end{titlepage}
+
+\tableofcontents
+\clearpage
 
 \section{目的}
     多くの数理モデルには、微分方程式が現れる。
@@ -47,39 +73,179 @@
 
     \subsection{オイラー法}
         以下の関数を考える。
-
         \begin{equation}
             \frac{\mathrm{d}u}{\mathrm{dt}}(t) = f(t, u(t)), \ u(0) = u_0 \label{equ:diff}
         \end{equation}
-
         この式の両辺を$t$について、$[t_a, t_b]$の範囲で積分すると、
-        
         \begin{equation*}
             u(t_b) - u(t_a) = \int^{t_b}_{t_a}f(t, u(t))\mathrm{d}t
         \end{equation*}
-
         を得る。$\Delta t = t_b - t_a$とすると、
         範囲内の積分を幅$\Delta t$、高さ$f(t_a, u(t_a))$の
         長方形の面積で近似でき、
-
         \begin{alignat*}{2}
             & u(t_b) - u(t_a) & \ \approx \ & f(t_a, u(t_a))\Delta t \\
             \rightarrow \ & u(t_b) & \ \approx \ & u(t_a) + f(t_a, u(t_a))\Delta t
         \end{alignat*}
-
         と書ける。ここで$(a, b)$を$(n, n + 1)$に置き換え、
         さらに$u(t_n)$を$u_n$に書き換えると、
-
         \begin{equation}
-            u_{n + 1} = u_n + f(t_n, u_n)\Delta t
+            u_{n + 1} \approx u_n + f(t_n, u_n)\Delta t \label{equ:euler}
         \end{equation}
-
         を得る。この式を$n$に対して繰り返し適用することで、
         式(\ref{equ:diff})を満たす関数を数値計算することができる。
 
+        式(\ref{equ:euler})は積分の近似の際に$f(t_a, u(t_a))$を用いたが、
+        $f(t_b, u(t_b))$を用いても同様に近似でき、
+        前者を前進オイラー法、後者を後退オイラー法と呼ぶ。
+
+    \subsection{クランク・ニコルソン法} \label{sec:crank}
+        オイラー法では$[t_n, t_{n+1}]$の積分を長方形の面積で近似したが、
+        範囲内の関数を1次関数で近似することで、台形の面積で近似でき、
+        精度を向上させることができる。台形で近似を行うと、
+        \begin{equation}
+            u_{n + 1} \approx u_n + \frac{f(t_n, u_n) + f(t_{n+1}, u_{n+1})}{2}\Delta t \label{equ:crank}
+        \end{equation}
+        を得る。この式は、$u_{n+1}$の近似が$u_{n+1}$を用いて陰的に表されているため、
+        そのまま計算するには工夫が必要である。
+
+    \subsection{アダムス・バッシュフォース法}
+        オイラー法やクランク・ニコルソン法では、$u_{n+1}$を求める際に$u_{n}$のみを用いるため、
+        一段法と呼ばれる。対して、$u_{n-1}$や$u_{n-2}$など、
+        より過去の値も用いて精度を高めるアルゴリズムを多段法と呼ぶ。
+
+        過去に計算した$N+1$個の点
+        を用いてラグランジュ補間により式(\ref{equ:diff})を満たす$f(t, u(t))$を
+        $N$次多項式で構成することを考える。
+
+        \subsubsection{$N=1$の場合}
+            まず、1次式で近似する場合を考える。
+            すでに計算した2点
+            $(t_n, f(t_n, u_n))$,
+            $(t_{n-1}, f(t_{n-1}, u_{n-1}))$
+            を用いてラグランジュ補完を行うと、
+            \begin{equation*}
+                f(t, u(t)) \approx \frac{t - t_{n-1}}{t_n - t_{n-1}}f(t_n, u_n) + \frac{t - t_n}{t_{n-1} - t_n}f(t_{n-1}, u_{n-1})
+            \end{equation*}
+            を得る。$t_n - t_{n-1} = \Delta t$を踏まえると、
+            \begin{eqnarray*}
+                f(t, u(t)) &\approx& \frac{t - t_{n-1}}{\Delta t}f(t_n, u_n) - \frac{t - t_n}{\Delta t}f(t_{n-1}, u_{n-1}) \\
+                &=& \frac{f(t_n, u_n) - f(t_{n-1}, u_{n-1})}{\Delta t}t - \frac{t_{n-1}f(t_n, u_n) - t_nf(t_{n-1}, u_{n-1})}{\Delta t}
+            \end{eqnarray*}
+            と書ける。これを$t_{n+1} - t_{n} = \Delta t$を踏まえて$[t_n, t_{n+1}]$の範囲で積分すると、
+            \begin{eqnarray*}
+                \int^{t_{n+1}}_{t_n} f(t', u(t)) dt' &\approx& \int^{t_{n+1}}_{t_n} \left\{ \frac{f(t_n, u_n) - f(t_{n-1}, u_{n-1})}{\Delta t}t - \frac{t_{n-1}f(t_n, u_n) - t_nf(t_{n-1}, u_{n-1})}{\Delta t} \right\} dt' \\
+                &=& 2\Delta t f(t_n, u_n) - \frac{\Delta t}{2} f(t_n, u_n) - \frac{\Delta t}{2} f(t_{n-1}, u_{n-1}) \\
+                &=& \frac{\Delta t}{2} \{3f(t_n, u_n) - f(t_{n-1}, u_{n-1})\}
+            \end{eqnarray*}
+            よって、
+            \begin{equation}
+                u_{n+1} \approx u_n + \frac{\Delta t}{2} \{3f(t_n, u_n) - f(t_{n-1}, u_{n-1})\}
+            \end{equation}
+            となる。これを2次のアダムス・バッシュフォース法と呼ぶ。
+
+        \subsubsection{$N=2$の場合}
+            2次式で近似を行う場合、3点が必要である。
+            $(t_n, f(t_n, u_n))$,
+            $(t_{n-1}, f(t_{n-1}, u_{n-1}))$,
+            $(t_{n-2}, f(t_{n-2}, u_{n-2}))$
+            を用いて同様に補間を行うと、
+            \begin{eqnarray*}
+                f(t, u(t)) &\approx& \frac{(t - t_{n-1})(t - t_{n-2})}{(t_n - t_{n-1})(t_n - t_{n-2})}f(t_n, u_n) + \\
+                && \frac{(t - t_{n-2})(t - t_n)}{(t_{n-1} - t_{n-2})(t_{n-1} - t_n)}f(t_{n-1}, u_{n-1}) + \\
+                && \frac{(t - t_n)(t - t_{n-1})}{(t_{n-2} - t_n)(t_{n-2} - t_{n-1})}f(t_{n-2}, u_{n-2})
+            \end{eqnarray*}
+            を得る。$N=1$の場合と同様に積分を行うと、
+            \begin{eqnarray}
+                \int^{t_{n+1}}_{t_n} f(t', u(t)) dt' &\approx& \frac{\Delta t}{12} \{23f(t_n, u_n) - 16f(t_{n-1}, u_{n-1}) + 5f(t_{n-2}, u_{n-2})\} \nonumber \\
+                \therefore u_{n+1} &\approx& u_n + \frac{\Delta t}{12} \{23f(t_n, u_n) - 16f(t_{n-1}, u_{n-1}) + 5f(t_{n-2}, u_{n-2})\}
+            \end{eqnarray}
+            となる。これを3次のアダムス・バッシュフォース法と呼ぶ。
+
+    \subsection{ホイン法}
+        \ref{sec:crank}節で、
+        クランク・ニコルソン法を計算するには工夫が必要であると述べた。
+        工夫の一つとして、$f(t_{n+1},u_{n+1})$を$u_n$と$f(t_n, u_n)$を用いて表すことを考える。
+        $[t_n, t_{n+1}]$の範囲で、$u(t)$を$(t_n, u_n)$を通る傾き$f(t_n, u_n)$の1次関数
+        で近似すると、
+        \begin{equation*}
+            u_{n+1} \approx u(t_{n+1}) = u_n + f(t_n, u_n)\Delta t
+        \end{equation*}
+        と書ける。これを式(\ref{equ:crank})に代入すると、
+        \begin{eqnarray}
+            u_{n+1} &\approx& u_n + \frac{f(t_n, u_n) + f(t_{n+1}, u_n + f(t_n, u_n)\Delta t)}{2}\Delta t
+        \end{eqnarray}
+        を得る。これをホイン法と呼ぶ。
+
+    \subsection{ルンゲ・クッタ法}
+        ホイン法は2次の一段法であるが、これを4次に拡張したものを4次のルンゲ・クッタ法と呼び、
+        これは以下の式で表される。
+        \begin{eqnarray}
+            u_{n+1} &=& u_n + \frac{F_1 + 2F_2 + 2F_3 + F_4}{6} \\
+            &&\begin{cases}
+                F_1 = f(t_n, u_n) \\
+                F_2 = \displaystyle f(t_n + \frac{\Delta t}{2}, u_n + F_1\frac{\Delta t}{2}) \\
+                F_3 = \displaystyle f(t_n + \frac{\Delta t}{2}, u_n + F_2\frac{\Delta t}{2}) \\
+                F_4 = f(t_{n+1}, u_n + F_3\Delta t)
+            \end{cases}
+        \end{eqnarray}
+
+        これの証明は膨大な記述量であるため、ここでは省略する。
+        詳細は\cite{runge}を参照されたい。
+
+\section{課題}
+    \subsection{課題3 常微分方程式の数値解}
+        式(\ref{equ:3diff})で表される常微分方程式の初期値問題を考える。
+        \begin{equation}
+            \frac{\mathrm{d}u}{\mathrm{dt}}=u, \ u(0)=1 \label{equ:3diff}
+        \end{equation}
+        ステップ幅を$\Delta t$として、$t$での数値解を$u_\mathrm{calc}(t, \Delta t)$とする。
+        $t=1$において、数値解$u_\mathrm{calc}(1, \Delta t)$と厳密解$u(1)$の差を
+        \begin{equation}
+            E(\Delta t) = |u_\mathrm{calc}(1, \Delta t) - u(1)| \label{equ:3loss}
+        \end{equation}
+        とする。
+
+        以下のアルゴリズムに対して、式(\ref{equ:3loss})の関数形を調べる。
+        \begin{itemize}
+            \item 前進オイラー法
+            \item 2次のアダムス・バッシュフォース法
+            \item 3次のアダムス・バッシュフォース法
+            \item ホイン法
+            \item 4次のルンゲ・クッタ法
+        \end{itemize}
+
+        \subsubsection{関数形の予測}
+
+        \subsubsection{結果}
+
+        \subsubsection{考察}
+
+    \subsection{課題4 アルゴリズムの安定性1}
+        \subsubsection{クランク・ニコルソン法の安定性}
+        \subsubsection{ホイン法の安定性}
+        \subsubsection{数値計算による確認}
+        \subsubsection{考察}
+
+    \subsection{課題5 アルゴリズムの安定性2}
+        \subsubsection{数値計算による確認}
+        \subsubsection{考察}
+
+    \subsection{課題7 ローレンツ方程式}
+        \subsubsection{ローレンツ方程式の描画}
+        \subsubsection{結果}
+        \subsubsection{考察}
+
+    \subsection{課題8 連立微分方程式}
+        \subsubsection{結果}
+        \subsubsection{考察}
+
 \begin{thebibliography}{99}
     \bibitem{text}{
-        実験演習ワーキンググループ, ``数理工学実験 2022年度版'', 京都大学工学部情報学科数理工学コース
+        実験演習ワーキンググループ、``数理工学実験 2022年度版''、京都大学工学部情報学科数理工学コース (2022)
+    }
+    \bibitem{runge}{
+        斉藤宣一、``数値解析入門''、東京大学出版 (2012)
     }
 \end{thebibliography}
 \end{document}
