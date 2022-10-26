@@ -10,16 +10,8 @@ void crank(double (*f)(double , double), double u, double dt, double start, doub
     double t;
     for (t = start; t < end; t += dt) {
         std::cout<<t<<" "<<u<<std::endl;
-        double u_ = u + f(t, u) * dt;
-        double u_diff;
-        u_diff = (f(t, u) + f(t + dt, u_)) * dt / 2.0;
-
-        while (fabs(u_ - (u + u_diff)) > 1e-7) {
-            u_ = (u + u_diff + u_) / 2.0;
-            u_diff = (f(t, u) + f(t + dt, u_)) * dt / 2.0;
-        }
-
-        u += u_diff;
+        
+        u = ((2.0 - alpha * dt) * u + 2.0 * beta * dt) / (2.0 + alpha * dt);
     }
     std::cout<<t<<" "<<u<<std::endl;
 }

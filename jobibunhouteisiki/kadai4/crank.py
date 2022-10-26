@@ -1,8 +1,8 @@
 from matplotlib import pyplot as plt
-from matplotlib import rc
 import numpy as np
 
-rc('text', usetex=True)
+plt.rcParams["text.usetex"] = True
+plt.rcParams["font.size"] = 18
 
 
 def readfile(path):
@@ -19,15 +19,25 @@ def readfile(path):
 
 
 if __name__ == '__main__':
-    t = np.linspace(0, 2)
+    t = np.linspace(0, 5)
     a = 10
     u0 = 1
     b = 1
     C = u0 - b / a
-    plt.plot(t, C * np.exp(-a * t) + b / a, label='$u(t)$')
+    plt.plot(t, C * np.exp(-a * t) + b / a, label='$u(t)$', color='black')
     
+    markers = {
+        0.1: '.',
+        0.3: 'v',
+        0.5: 's'
+    }
+    colors = {
+        0.1: 'red',
+        0.3: 'blue',
+        0.5: 'green'
+    }
     for dt in [0.1, 0.3, 0.5]:
-        plt.plot(*readfile(f'crank{str(dt)[2:]}.txt'), label=f'$\Delta t={dt}$')
+        plt.plot(*readfile(f'crank{str(dt)[2:]}.txt'), label=f'$\Delta t={dt}$', marker=markers[dt], color=colors[dt])
     
     plt.xlabel('$t$')
     plt.ylabel('$u$', rotation=0)
@@ -39,6 +49,8 @@ if __name__ == '__main__':
     # splt.ylim(, 5)
     
     plt.legend()
+    
+    plt.tight_layout()
     
     plt.savefig('crank.eps')
     # plt.show()

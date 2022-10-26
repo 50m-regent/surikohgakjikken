@@ -1,8 +1,8 @@
 from matplotlib import pyplot as plt
-from matplotlib import rc
 import numpy as np
 
-rc('text', usetex=True)
+plt.rcParams["text.usetex"] = True
+plt.rcParams["font.size"] = 18
 
 
 def readfile(path):
@@ -19,7 +19,7 @@ def readfile(path):
 
 
 if __name__ == '__main__':
-    plt.plot(*readfile('x.txt'))
+    plt.plot(*readfile('x.txt'), color='black')
     
     plt.xlabel('$t$')
     plt.ylabel('$x$', rotation=0)
@@ -28,9 +28,10 @@ if __name__ == '__main__':
     # plt.yscale('log')
     
     plt.xlim(0, 100)
-    # plt.ylim(-3, 3)
+    plt.ylim(-20, 20)
     
     # plt.legend()
+    plt.tight_layout()
     
     plt.savefig('x.eps')
     

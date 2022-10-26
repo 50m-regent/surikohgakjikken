@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.141592653-p4.0.0-220214-2.6 (utf8.euc) (TeX Live 2022) (preloaded format=platex 2022.10.3)  24 OCT 2022 16:16
+This is e-pTeX, Version 3.141592653-p4.0.0-220214-2.6 (utf8.euc) (TeX Live 2022) (preloaded format=platex 2022.10.3)  27 OCT 2022 02:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -159,13 +159,46 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (/usr/local/texlive/2022/texmf-dist/tex/latex/tools/bm.sty
+)) (/usr/local/texlive/2022/texmf-dist/tex/latex/base/latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup7
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/mathtools/mathtools.sty
+Package: mathtools 2022/02/07 v1.28a mathematical typesetting tools
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count272
+\calc@Bcount=\count273
+\calc@Adimen=\dimen177
+\calc@Bdimen=\dimen178
+\calc@Askip=\skip56
+\calc@Bskip=\skip57
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count274
+\calc@Cskip=\skip58
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/mathtools/mhsetup.sty
+Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
+)
+\g_MT_multlinerow_int=\count275
+\l_MT_multwidth_dim=\dimen179
+\origjot=\skip59
+\l_MT_shortvdotswithinadjustabove_dim=\dimen180
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen181
+\l_MT_above_intertext_sep=\dimen182
+\l_MT_below_intertext_sep=\dimen183
+\l_MT_above_shortintertext_sep=\dimen184
+\l_MT_below_shortintertext_sep=\dimen185
+\xmathstrut@box=\box79
+\xmathstrut@dim=\dimen186
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/tools/bm.sty
 Package: bm 2021/04/25 v1.2e Bold Symbol Support (DPC/FMi)
-\symboldoperators=\mathgroup7
-\symboldletters=\mathgroup8
-\symboldsymbols=\mathgroup9
+\symboldoperators=\mathgroup8
+\symboldletters=\mathgroup9
+\symboldsymbols=\mathgroup10
 Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
-\symboldmincho=\mathgroup10
+\symboldmincho=\mathgroup11
 Package bm Info: No bold for \U/msa/m/n, using \pmb.
 Package bm Info: No bold for \U/msb/m/n, using \pmb.
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
@@ -173,104 +206,123 @@ LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
  (/usr/local/texlive/2022/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count272
+\c@float@type=\count276
 \float@exts=\toks30
-\float@box=\box79
+\float@box=\box80
 \@float@everytoks=\toks31
-\@floatcapt=\box80
+\@floatcapt=\box81
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks32
-\c@algorithm=\count273
+\c@algorithm=\count277
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/algorithms/algorithmic.sty
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
-\c@ALC@unique=\count274
-\c@ALC@line=\count275
-\c@ALC@rem=\count276
-\c@ALC@depth=\count277
-\ALC@tlm=\skip56
-\algorithmicindent=\skip57
+\c@ALC@unique=\count278
+\c@ALC@line=\count279
+\c@ALC@rem=\count280
+\c@ALC@depth=\count281
+\ALC@tlm=\skip60
+\algorithmicindent=\skip61
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count278
-\lst@gtempboxa=\box81
+\lst@mode=\count282
+\lst@gtempboxa=\box82
 \lst@token=\toks33
-\lst@length=\count279
-\lst@currlwidth=\dimen177
-\lst@column=\count280
-\lst@pos=\count281
-\lst@lostspace=\dimen178
-\lst@width=\dimen179
-\lst@newlines=\count282
-\lst@lineno=\count283
-\lst@maxwidth=\dimen180
+\lst@length=\count283
+\lst@currlwidth=\dimen187
+\lst@column=\count284
+\lst@pos=\count285
+\lst@lostspace=\dimen188
+\lst@width=\dimen189
+\lst@newlines=\count286
+\lst@lineno=\count287
+\lst@maxwidth=\dimen190
  (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count284
-\lst@skipnumbers=\count285
-\lst@framebox=\box82
+\c@lstnumber=\count288
+\lst@skipnumbers=\count289
+\lst@framebox=\box83
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
- (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/mathtools/empheq.sty
+Package: empheq 2017/03/31 v2.15 Emphasizing equations
+\l_EQ_equationtype_int=\count290
+\l_EQ_alignmentmode_int=\count291
+\l_EQ_totalwidth_dim=\dimen191
+\l_EQ_displaywidth_dim=\dimen192
+\l_EQ_temp_linewidth_dim=\dimen193
+\l_EQ_linewidth_dim=\dimen194
+\EmphEqdelimitershortfall=\dimen195
+\EmphEqdelimiterfactor=\count292
+\g_EQ_toptag_height_dim=\dimen196
+\g_EQ_bottomtag_depth_dim=\dimen197
+\g_EQ_toprow_height_dim=\dimen198
+\g_EQ_bottomrow_depth_dim=\dimen199
+\g_EQ_widesttag_dim=\dimen256
+\EQ_mathdisplay_box=\box84
+\EQ_tag_box=\box85
+\g_EQ_temprow_int=\count293
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
 File: l3backend-dvips.def 2022-02-07 L3 backend support: dvips
-\l__pdf_internal_box=\box83
-\g__pdf_backend_object_int=\count286
-\l__pdf_backend_content_box=\box84
-\l__pdf_backend_model_box=\box85
-\g__pdf_backend_annotation_int=\count287
-\g__pdf_backend_link_int=\count288
-\g__pdf_backend_link_sf_int=\count289
+\l__pdf_internal_box=\box86
+\g__pdf_backend_object_int=\count294
+\l__pdf_backend_content_box=\box87
+\l__pdf_backend_model_box=\box88
+\g__pdf_backend_annotation_int=\count295
+\g__pdf_backend_link_int=\count296
+\g__pdf_backend_link_sf_int=\count297
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-\c@lstlisting=\count290
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+\c@lstlisting=\count298
+\Hy@linkcounter=\count299
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 35.
+(Font)              scaled to size 13.83836pt on input line 37.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 35.
+(Font)              scaled to size 13.83836pt on input line 37.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 23.90964pt on input line 39.
+(Font)              scaled to size 23.90964pt on input line 41.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 23.90964pt on input line 39.
+(Font)              scaled to size 23.90964pt on input line 41.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 47.
+(Font)              scaled to size 11.53198pt on input line 49.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 47.
+(Font)              scaled to size 11.53198pt on input line 49.
  [1
 
 ]
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 63.
+(Font)              scaled to size 9.60999pt on input line 65.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 63.
+(Font)              scaled to size 9.60999pt on input line 65.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 63.
+(Font)              scaled to size 13.83836pt on input line 65.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 63.
+(Font)              scaled to size 13.83836pt on input line 65.
  (./report.toc
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 6.72699pt on input line 3.
@@ -284,6 +336,10 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 3.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 3.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 6.72699pt on input line 3.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
@@ -294,19 +350,69 @@ LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 
  [1]
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 74.
+(Font)              scaled to size 11.53198pt on input line 76.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 74.
+(Font)              scaled to size 11.53198pt on input line 76.
  [2
 
-] [3] [4] [5] (./report.aux) ) 
-Here is how much of TeX's memory you used:
- 4348 strings out of 478724
- 63909 string characters out of 5858392
- 565390 words of memory out of 5000000
- 22739 multiletter control sequences out of 15000+600000
- 482746 words of font info for 91 fonts, out of 8000000 for 9000
- 934 hyphenation exceptions out of 8191
- 55i,12n,62p,235b,261s stack positions out of 10000i,1000n,20000p,200000b,200000s
+] [3] [4]
+File: kadai3/euler.eps Graphic file (type eps)
+<kadai3/euler.eps>
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 230.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 230.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 5.76599pt on input line 230.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 230.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 5.76599pt on input line 230.
+File: kadai3/ab2.eps Graphic file (type eps)
+<kadai3/ab2.eps>
+File: kadai3/ab3.eps Graphic file (type eps)
+<kadai3/ab3.eps>
 
-Output written on report.dvi (6 pages, 27548 bytes).
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5]
+File: kadai3/heun.eps Graphic file (type eps)
+<kadai3/heun.eps>
+File: kadai3/runge_kutta.eps Graphic file (type eps)
+<kadai3/runge_kutta.eps>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[6]
+File: kadai3/kadai3.eps Graphic file (type eps)
+<kadai3/kadai3.eps>
+ [7] [8]
+File: kadai4/crank.eps Graphic file (type eps)
+<kadai4/crank.eps>
+File: kadai4/heun.eps Graphic file (type eps)
+<kadai4/heun.eps>
+ [9] [10]
+File: kadai5/kadai5.eps Graphic file (type eps)
+<kadai5/kadai5.eps>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[11]
+File: kadai7/x.eps Graphic file (type eps)
+<kadai7/x.eps>
+File: kadai7/xyz.eps Graphic file (type eps)
+<kadai7/xyz.eps>
+ [12] [13] [14] (./report.aux) ) 
+Here is how much of TeX's memory you used:
+ 5398 strings out of 478724
+ 83509 string characters out of 5858392
+ 587592 words of memory out of 5000000
+ 23737 multiletter control sequences out of 15000+600000
+ 488781 words of font info for 119 fonts, out of 8000000 for 9000
+ 934 hyphenation exceptions out of 8191
+ 55i,12n,62p,281b,462s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on report.dvi (15 pages, 42468 bytes).

@@ -8,33 +8,84 @@
 \newlabel{sec:crank}{{2.2}{2}}
 \newlabel{equ:crank}{{2.3}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}アダムス・バッシュフォース法}{2}{}\protected@file@percent }
+\citation{text}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}$N=1$の場合}{3}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}$N=2$の場合}{3}{}\protected@file@percent }
 \citation{runge}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4}ホイン法}{4}{}\protected@file@percent }
+\newlabel{equ:heun}{{2.6}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.5}ルンゲ・クッタ法}{4}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3}課題}{4}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}課題3 常微分方程式の数値解}{4}{}\protected@file@percent }
 \newlabel{equ:3diff}{{3.1}{4}}
 \newlabel{equ:3loss}{{3.2}{4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}結果}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{前進オイラー法}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces  前進オイラー法を用いて計算した$E(\Delta t)$。左は片対数、右は両対数グラフ}}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{2次アダムス・バッシュフォース法}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  2次アダムス・バッシュフォース法を用いて計算した$E(\Delta t)$。左は片対数、右は両対数グラフ}}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{3次アダムス・バッシュフォース法}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  3次アダムス・バッシュフォース法を用いて計算した$E(\Delta t)$。左は片対数、右は両対数グラフ}}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{ホイン法}{6}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces  ホイン法を用いて計算した$E(\Delta t)$。左は片対数、右は両対数グラフ}}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{4次ルンゲ・クッタ法}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}考察}{6}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces  4次ルンゲ・クッタ法を用いて計算した$E(\Delta t)$。左は片対数、右は両対数グラフ}}{7}{}\protected@file@percent }
+\newlabel{equ:guess}{{3.3}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces  それぞれのアルゴリズムで計算した$E(\Delta t)$ (両対数グラフ)。$E(\Delta t)$の他に、$n=1,2,3,4$について、$\Theta (\Delta t^n)$のグラフを重ねた。}}{7}{}\protected@file@percent }
+\newlabel{fig:3}{{6}{7}}
+\citation{2rec}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces  $E(\Delta t)$の指数の予測と計算結果}}{8}{}\protected@file@percent }
+\newlabel{tab:3}{{1}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}結論}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}課題4 陰・陽解法の安定性}{8}{}\protected@file@percent }
+\newlabel{equ:rec}{{3.4}{8}}
+\newlabel{equ:4diff}{{3.6}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}クランク・ニコルソン法の安定性}{8}{}\protected@file@percent }
+\newlabel{sec:4crank}{{3.2.1}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}ホイン法の安定性}{9}{}\protected@file@percent }
+\newlabel{equ:4heun}{{3.7}{9}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}数値計算による確認}{9}{}\protected@file@percent }
+\newlabel{sec:4calc}{{3.2.3}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces  クランク・ニコルソン法による式(3.6\@setref@ {})の数値計算結果。$\Delta t = 0.1, 0.3, 0.5$の場合の結果と、理論値をプロットした。}}{9}{}\protected@file@percent }
+\newlabel{fig:4crank}{{7}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces  ホイン法による数値計算結果。式(3.6\@setref@ {})の数値計算結果。$\Delta t = 0.05, 0.15, 0.21$の場合の結果と、理論値をプロットした。}}{9}{}\protected@file@percent }
+\newlabel{fig:4heun}{{8}{9}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.4}考察}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.5}結論}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}課題5 アルゴリズムの安定性}{10}{}\protected@file@percent }
+\newlabel{equ:5diff}{{3.8}{10}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}アルゴリズムの安定性}{10}{}\protected@file@percent }
+\newlabel{sec:alg_stable}{{3.3.1}{10}}
+\newlabel{equ:5alg}{{3.9}{10}}
+\citation{3rec}
+\newlabel{equ:5alg_stable1}{{3.10}{11}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}数値計算による確認}{11}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.3}結論}{11}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}課題7 ローレンツ方程式}{11}{}\protected@file@percent }
+\newlabel{equ:laurents}{{3.11}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces  式(3.8\@setref@ {})の方程式の数値解。$\Delta t = 0.1, 0.01, 0.001, 0.0001$の場合と、厳密解をプロットした。}}{12}{}\protected@file@percent }
+\newlabel{fig:5}{{9}{12}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1}ローレンツ方程式の描画}{12}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces  $x(t)$の数値計算結果}}{12}{}\protected@file@percent }
+\newlabel{fig:x}{{10}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces  $(x(t), y(t), z(t))$の数値計算結果}}{12}{}\protected@file@percent }
+\newlabel{fig:xyz}{{11}{12}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.2}$\epsilon $の変化による軌道の変化}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.3}結果}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.4}考察}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.5}結論}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}課題8 連立微分方程式}{13}{}\protected@file@percent }
+\newlabel{equ:sim}{{3.12}{13}}
+\newlabel{equ:order}{{3.13}{13}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.1}計算量の削減}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.2}結果}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.3}考察}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.4}結論}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}付録}{13}{}\protected@file@percent }
 \bibcite{text}{1}
 \bibcite{runge}{2}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}関数形の予測}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}結果}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}考察}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}課題4 アルゴリズムの安定性1}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}クランク・ニコルソン法の安定性}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}ホイン法の安定性}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}数値計算による確認}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.4}考察}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}課題5 アルゴリズムの安定性2}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}数値計算による確認}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}考察}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}課題7 ローレンツ方程式}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1}ローレンツ方程式の描画}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.2}結果}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.3}考察}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}課題8 連立微分方程式}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.1}結果}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.2}考察}{5}{}\protected@file@percent }
-\gdef \@abspage@last{6}
+\bibcite{2rec}{3}
+\bibcite{3rec}{4}
+\@writefile{toc}{\contentsline {section}{参考文献}{14}{}\protected@file@percent }
+\gdef \@abspage@last{15}
