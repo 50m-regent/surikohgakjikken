@@ -1,8 +1,8 @@
 from matplotlib import pyplot as plt
-from matplotlib import rc
 import numpy as np
 
-rc('text', usetex=True)
+plt.rcParams["text.usetex"] = True
+plt.rcParams["font.size"] = 18
 
 
 def readfile(path):
@@ -21,28 +21,31 @@ def readfile(path):
 def plot_exp(ts2, us2, ts4, us4, ts6, us6):
     plt.cla()
     
-    plt.plot(ts2, us2, label='$n=2$')
-    plt.plot(ts4, us4, label='$n=4$')
-    plt.plot(ts6, us6, label='$n=6$')
+    plt.plot(ts2, us2, label='$n=2$', color='red')
+    plt.plot(ts4, us4, label='$n=4$', color='green')
+    plt.plot(ts6, us6, label='$n=6$', color='blue')
     
-    t = np.logspace(0.8, 2)
-    plt.plot(t, 2 ** (t - 15), linestyle='--', label='$2^{t - 15}$', color='black')
-    plt.plot(t, 2 ** (t - 21), linestyle=':', label='$2^{t - 21}$', color='black')
-    plt.plot(t, 2 ** (t - 27), linestyle='-.', label='$2^{t - 27}$', color='black')
+    t = np.logspace(-2, 2)
+    plt.plot(t, 1e-6 * np.exp(0.8 * t), linestyle='--', label='$10^{-6}e^{0.8t}$', color='black')
+    plt.plot(t, 1e-8 * np.exp(0.8 * t), linestyle=':', label='$10^{-8}e^{0.8t}$', color='black')
+    plt.plot(t, 1e-10 * np.exp(0.8 * t), linestyle='-.', label='$10^{-10}e^{0.8t}$', color='black')
     
     plt.xlabel('$t$')
     plt.ylabel('$\Delta_n$', rotation=0)
     
     plt.yscale('log')
     
-    plt.xlim(0.01, 100)
+    plt.xlim(0, 100)
     plt.ylim(10 ** -6.5, 100)
     
     plt.legend()
+    plt.tight_layout()
     
     plt.savefig('2halflog_exp.eps')
     
     plt.xscale('log')
+    plt.legend(ncol=2)
+    plt.xlim(0.01, 100)
     plt.savefig('2fulllog_exp.eps')
 
 
@@ -50,28 +53,31 @@ def plot_exp(ts2, us2, ts4, us4, ts6, us6):
 def plot_power(ts2, us2, ts4, us4, ts6, us6):
     plt.cla()
     
-    plt.plot(ts2, us2, label='$n=2$')
-    plt.plot(ts4, us4, label='$n=4$')
-    plt.plot(ts6, us6, label='$n=6$')
+    plt.plot(ts2, us2, label='$n=2$', color='red')
+    plt.plot(ts4, us4, label='$n=4$', color='green')
+    plt.plot(ts6, us6, label='$n=6$', color='blue')
     
     t = np.logspace(0, 2)
-    plt.plot(t, 1e-17 * t ** 15, linestyle='--', label='$10^{-17}t^{15}$', color='black')
-    plt.plot(t, 1e-19 * t ** 15, linestyle=':', label='$10^{-19}t^{15}$', color='black')
-    plt.plot(t, 1e-21 * t ** 15, linestyle='-.', label='$10^{-21}t^{15}$', color='black')
+    plt.plot(t, 10 ** (-18.5) * t ** 15, linestyle='--', label='$10^{-18.5}t^{15}$', color='black')
+    plt.plot(t, 10 ** (-20.5) * t ** 15, linestyle=':', label='$10^{-20.5}t^{15}$', color='black')
+    plt.plot(t, 10 ** (-22.5) * t ** 15, linestyle='-.', label='$10^{-22.5}t^{15}$', color='black')
     
     plt.xlabel('$t$')
     plt.ylabel('$\Delta_n$', rotation=0)
     
     plt.yscale('log')
     
-    plt.xlim(0.01, 100)
+    plt.xlim(0, 100)
     plt.ylim(10 ** -6.5, 100)
     
     plt.legend()
+    plt.tight_layout()
     
     plt.savefig('2halflog_power.eps')
     
     plt.xscale('log')
+    plt.legend(ncol=2)
+    plt.xlim(0.01, 100)
     plt.savefig('2fulllog_power.eps')
 
 

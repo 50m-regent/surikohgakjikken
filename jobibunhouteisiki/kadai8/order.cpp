@@ -37,6 +37,10 @@ double runge_kutta(
         }
     }
 
+    for (int i = 0; i < N; i++) {
+        std::cout<<x[i]<<std::endl;
+    }
+
     return Rsum / (end - calc_t);
 }
 
@@ -60,7 +64,7 @@ void calculate_Rs(int N) {
 
     for (double K = 1; K <= 5 + 1e-7; K += 0.1) {
         const double R = runge_kutta(f, x, K, N, dt, start, end, calc_t);
-        std::cout<<K<<" "<<R<<std::endl;
+        // std::cout<<K<<" "<<R<<std::endl;
     }
 }
 
@@ -69,6 +73,15 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    const int N = atoi(argv[1]);
-    calculate_Rs(N);
+    const double K = atoi(argv[1]);
+    const int N = 100;
+
+    const double start = 0, end = 100, calc_t = 50, dt = 0.01;
+    std::vector<double> x(N);
+    for (int i = 0; i < N; i++) {
+        double y = 2 * M_PI / N * (i - 1);
+        x[i] = y + 0.01 * sin(y);
+    }
+
+    const double R = runge_kutta(f, x, K, N, dt, start, end, calc_t);
 }

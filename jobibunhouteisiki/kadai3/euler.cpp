@@ -2,7 +2,7 @@
 #include <iomanip>
 #include <cmath>
 
-double euler(double (*f)(double , double), double u, double dt, double start, double end) {
+const double euler(double (*f)(double , double), double u, double dt, double start, double end) {
     for (double t = start; t < end; t += dt) {
         u += f(t, u) * dt;
     }

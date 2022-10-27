@@ -195,7 +195,7 @@
         これの証明は膨大な記述量であるため、ここでは省略する。
         詳細は\cite{runge}を参照されたい。
 
-\section{課題}
+\section{課題} \label{sec:ex}
     \subsection{課題3 常微分方程式の数値解}
         式(\ref{equ:3diff})で表される常微分方程式の初期値問題を考える。
         \begin{equation}
@@ -506,7 +506,6 @@
             実際に、式(\ref{equ:5alg})に示したアルゴリズムを用いて式(\ref{equ:5diff})の方程式
             の解を$\Delta t$を変化させながら数値計算した様子を図\ref{fig:5}に示す。
             初期値は$u_0 = 1$とした。
-
             \begin{figure}[h]
                 \centering
                 \includegraphics[width=0.8\hsize]{kadai5/kadai5.eps}
@@ -575,11 +574,84 @@
                 \Delta_n(t) \coloneqq \|\bm{x}_0(t) - \bm{x}_n(t)\|
             \end{equation*}
             を定義する。$\Delta_n(t)$のグラフを作成し、
-            これの関数形を調べる。
+            これが漸近値に至る少し前の時間帯の関数形を調べる。
 
         \subsubsection{結果}
+            $\Delta_n(t)$の計算結果を図\ref{fig:7halflog}, \ref{fig:7fulllog}に示す。
+            \begin{figure}[h]
+                \begin{minipage}{0.49\hsize}
+                    \centering
+                    \includegraphics[width=1\hsize]{kadai7/2halflog.eps}
+                    \caption{
+                        $\Delta_n(t)$の計算結果
+                        (片対数グラフ)
+                    }
+                    \label{fig:7halflog}
+                \end{minipage}
+                \begin{minipage}{0.49\hsize}
+                    \centering
+                    \includegraphics[width=1\hsize]{kadai7/2fulllog.eps}
+                    \caption{
+                        $\Delta_n(t)$の計算結果
+                        (両対数グラフ)
+                    }
+                    \label{fig:7fulllog}
+                \end{minipage}
+            \end{figure}
+
         \subsubsection{考察}
+            $\Delta_n(t)$の関数形を調べるために、
+            冪関数と指数関数をそれぞれ図\ref{fig:7halflog}, \ref{fig:7fulllog}
+            に重ねたグラフを図\ref{fig:7halflog_power}〜\ref{fig:7fulllog_exp}に示す。
+            \begin{figure}[h]
+                \begin{minipage}{0.49\hsize}
+                    \centering
+                    \includegraphics[width=1\hsize]{kadai7/2halflog_power.eps}
+                    \caption{
+                        $\Delta_n(t)$に冪関数を重ねた図(片対数グラフ)
+                    }
+                    \label{fig:7halflog_power}
+                \end{minipage}
+                \begin{minipage}{0.49\hsize}
+                    \centering
+                    \includegraphics[width=1\hsize]{kadai7/2fulllog_power.eps}
+                    \caption{
+                        $\Delta_n(t)$に冪関数を重ねた図(両対数グラフ)
+                    }
+                    \label{fig:7fulllog_power}
+                \end{minipage}
+            \end{figure}
+            \begin{figure}[h]
+                \begin{minipage}{0.49\hsize}
+                    \centering
+                    \includegraphics[width=1\hsize]{kadai7/2halflog_exp.eps}
+                    \caption{
+                        $\Delta_n(t)$に指数関数を重ねた図(片対数グラフ)
+                    }
+                    \label{fig:7halflog_exp}
+                \end{minipage}
+                \begin{minipage}{0.49\hsize}
+                    \centering
+                    \includegraphics[width=1\hsize]{kadai7/2fulllog_exp.eps}
+                    \caption{
+                        $\Delta_n(t)$に指数関数を重ねた図(両対数グラフ)
+                    }
+                    \label{fig:7fulllog_exp}
+                \end{minipage}
+            \end{figure}
+            図\ref{fig:7fulllog_power}, \ref{fig:7halflog_exp}を見ると、
+            冪関数と指数関数のどちらも綺麗に重なっているように見える。
+            しかし、図\ref{fig:7halflog_power}を見ると、
+            $n$が増加するにつれ、漸近値付近で$\Delta_n(t)$と冪関数の差が開いていることがわかる。
+            一方、図\ref{fig:7fulllog_exp}を見ると、
+            指数関数は$n$が変化しても重なったままである。
+
+            以上より、$\Delta_n(t)$の漸近値直前の関数形は指数関数であり、
+            その指数は0.8であることがわかった。
+
         \subsubsection{結論}
+            $\Delta_n(t)$の漸近値直前の関数形は$n$に依存せず、
+            $e^{-0.8t}$である。
 
     \subsection{課題8 連立微分方程式}
         式(\ref{equ:sim})で表される連立微分方程式を考える。
@@ -593,7 +665,7 @@
         \end{equation*}
         また、式(\ref{equ:order})で定義される値$R(t)$を考える。
         \begin{equation}
-            R(t) = \sqrt{R_x^2 + R_y^2}, \ R_x(t) \coloneqq \frac{1}{N}\sum^N_{j=1}\cos x_j, \ R_y(t) \coloneqq \frac{1}{N}\sum^N_{j=1}\sin x_j \label{equ:order}
+            R(t) = \sqrt{R_x^2 + R_y^2}, \ R_x \coloneqq \frac{1}{N}\sum^N_{j=1}\cos x_j, \ R_y \coloneqq \frac{1}{N}\sum^N_{j=1}\sin x_j \label{equ:order}
         \end{equation}
 
         ステップ幅$\Delta t = 0.01$の4次ルンゲ・クッタ法を用いて数値計算を行う。
@@ -605,12 +677,290 @@
         $\bar{R}$を$K$の関数としてプロットする。
 
         \subsubsection{計算量の削減}
+            式(\ref{equ:sim})をそのまま計算すると、
+            $O(N^2)$の時間計算量を要するが、
+            $O(N)$で計算する方法を述べる。
+
+            右辺第2項の総和の中身に加法定理を適用すると、
+            \begin{eqnarray*}
+                \frac{K}{N}\sum^N_{j=1}\sin(x_i-x_j) &=& \frac{K}{N}\sum^N_{j=1}(\sin x_i\cos x_j - \cos x_i \sin x_j) \\
+                &=& K\left(\sin x_i\frac{1}{N}\sum^N_{j=1}\cos x_j - \cos x_i\frac{1}{N}\sum^N_{j=1}\sin x_j\right) \\
+                &=& K (R_x\sin x_i - R_y\cos x_i)
+            \end{eqnarray*}
+            となり、式(\ref{equ:sim})は
+            \begin{equation*}
+                \frac{\mathrm{d}x_i}{\mathrm{d}t} = \omega_i - K (R_x\sin x_i - R_y\cos x_i)
+            \end{equation*}
+            と書ける。これは$R_x, R_y$の前計算を行うことで$O(1)$で計算できるため、
+            全体では$O(N)$の時間計算量となる。
 
         \subsubsection{結果}
+            計算した$\bar{R}(K)$を図\ref{fig:8}に示す。
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=0.8\hsize]{kadai8/8.eps}
+                \caption{
+                    計算した$\bar{R}(K)$。
+                }
+                \label{fig:8}
+            \end{figure}
+
         \subsubsection{考察}
-        \subsubsection{結論}
+            $N\rightarrow\infty$とした際、$K=2$は臨界点と呼ばれている。
+            その理由を以下に考察する。
+
+            $x_i$を位相とすると、
+            $xy$平面における単位円上のその位相を持つ点の座標は$(\cos x_i, \sin x_i)$と書ける。
+            よって、式(\ref{equ:order})より、
+            $R_x, R_y$はそれぞれ$N$点の$x, y$座標の平均であるといえ、
+            $R$は平均座標のノルムである。
+
+            以上を踏まえると、$x_i$の分散が大きいほど$R$は0に近づき、
+            分散が小さいほど$R$は1に近づくことがわかる。
+            図\ref{fig:k1}, \ref{fig:k3}に$N=10^2$について、
+            $K=1, 3$のときの単位円上の$N$点$(\cos x_i(100), \sin x_i(100))$
+            の分布を示す。
+            \begin{figure}[h]
+                \begin{minipage}{0.49\hsize}
+                    \centering
+                    \includegraphics[width=1\hsize]{kadai8/K1.eps}
+                    \caption{
+                        $K=1$のときの$x_i \ (i\in 1, 2, \cdots,N)$の分布
+                    }
+                    \label{fig:k1}
+                \end{minipage}
+                \begin{minipage}{0.49\hsize}
+                    \centering
+                    \includegraphics[width=1\hsize]{kadai8/K3.eps}
+                    \caption{
+                        $K=3$のときの$x_i \ (i\in 1, 2, \cdots,N)$の分布
+                    }
+                    \label{fig:k3}
+                \end{minipage}
+            \end{figure}
+            図\ref{fig:8}と図\ref{fig:k1}, \ref{fig:k3}を見比べると、
+            $\bar{R}\approx 0$である$K=1$のときは実際に$x_i$の分散が大きく、
+            逆に$\bar{R}$が増加している$K=3$のときは$x_i$の分散が小さいことがわかる。
+
+            また、図\ref{fig:8}より、$N = 10^2, 10^3$のどちらについても、
+            $K \leq 2$のときは$R\approx 0$で、
+            $K > 2$のときに$R$が増加していることわかり、
+            これが$K = 2$が臨界点と呼ばれる要因であると考えられる。
 
 \section{付録}
+    本節には\ref{sec:ex}節で作成したc++コードを一部抜粋して記述する。
+
+    \subsection{課題3}
+        \begin{lstlisting}[caption=前進オイラー法]
+const double euler(
+    const double (*f)(double , double), // 被積分関数
+    double u, // 初期値
+    const double dt, // ステップ幅
+    const double start, const double end // 積分範囲
+) {
+    for (double t = start; t < end; t += dt)
+        u += f(t, u) * dt;
+
+    return u;
+}
+        \end{lstlisting}
+        \begin{lstlisting}[caption=2次アダムス・バッシュフォース法]
+const double adams_second(
+    const double (*f)(double , double), // 被積分関数
+    const double (*uexact)(double), // 厳密解
+    double u, // 初期値
+    const double dt, // ステップ幅
+    const double start, const double end // 積分範囲
+) {
+    double lastf = uexact(start - dt);
+    for (double t = start; t < end; t += dt) {
+        const double nowf = f(t, u);
+        u += (3.0 * nowf - lastf) * dt / 2.0;
+
+        lastf = nowf;
+    }
+
+    return u;
+}
+        \end{lstlisting}
+        \begin{lstlisting}[caption=3次アダムス・バッシュフォース法]
+const double adams_third(
+    const double (*f)(double , double), // 被積分関数
+    const double (*uexact)(double), // 厳密解
+    double u, // 初期値
+    const double dt, // ステップ幅
+    const double start, const double end // 積分範囲
+) {
+    double lastf = uexact(start - dt), lastlastf = uexact(start - dt - dt);
+    for (double t = start; t < end; t += dt) {
+        const double nowf = f(t, u);
+        u += (23.0 * nowf - 16.0 * lastf + 5.0 * lastlastf) * dt / 12.0;
+
+        lastlastf = lastf; lastf = nowf;
+    }
+
+    return u;
+}
+        \end{lstlisting}
+        \begin{lstlisting}[caption=ホイン法, label=src:heun]
+const double heun(
+    const double (*f)(double , double), // 被積分関数
+    double u, // 初期値
+    const double dt, // ステップ幅
+    const double start, const double end // 積分範囲
+) {
+    for (double t = start; t < end; t += dt)
+        u += (f(t, u) + f(t + dt, u + f(t, u) * dt)) * dt / 2.0;
+
+    return u;
+}
+        \end{lstlisting}
+        \begin{lstlisting}[caption=4次ルンゲ・クッタ法]
+const double runge_kutta(
+    const double (*f)(double , double), // 被積分関数
+    double u, // 初期値
+    const double dt, // ステップ幅
+    const double start, const double end // 積分範囲
+) {
+    for (double t = start; t < end; t += dt) {
+        const double f1 = f(t, u);
+        const double f2 = f(t + dt / 2.0, u + f1 * dt / 2.0);
+        const double f3 = f(t + dt / 2.0, u + f2 * dt / 2.0);
+        const double f4 = f(t + dt, u + f3 * dt);
+
+        u += (f1 + 2 * f2 + 2 * f3 + f4) * dt / 6.0;
+    }
+
+    return u;
+}
+        \end{lstlisting}
+
+    \subsection{課題4}
+        \begin{lstlisting}[caption=クランク・ニコルソン法]
+constexpr double ALPHA = 10;
+constexpr double BETA = 1;
+
+void crank(
+    const double (*f)(double , double), // 被積分関数
+    double u, // 初期値
+    const double dt, // ステップ幅
+    const double start, const double end // 積分範囲
+) {
+    double t;
+    for (t = start; t < end; t += dt) {
+        u = ((2.0 - ALPHA * dt) * u + 2.0 * BETA * dt) / (2.0 + ALPHA * dt);
+    }
+}
+        \end{lstlisting}
+        ホイン法はコード\ref{src:heun}と同じため、略。
+
+    \subsection{課題5}
+        \begin{lstlisting}[caption=式(\ref{equ:5alg})による数値計算]
+void simulate(
+    const double (*f)(double , double), // 被積分関数
+    const double (*uexact)(double), // 厳密解
+    double u, // 初期値
+    const double dt, // ステップ幅
+    const double start, const double end // 積分範囲
+) {
+    double lastu = uexact(start - dt);
+    for (double t = start; t < end; t += dt) {
+        const double utemp = u;
+        u = lastu + 2 * dt * f(t, u);
+
+        lastu = utemp;
+    }
+}
+        \end{lstlisting}
+
+    \subsection{課題7}
+        \begin{lstlisting}[caption=4次ルンゲ・クッタ法によるローレンツ方程式の数値計算]
+void runge_kutta(
+    const double (*fx)(double , double, double),
+    const double (*fy)(double , double, double),
+    const double (*fz)(double , double, double), // 被積分関数
+    double x, double y, double z, // 初期値
+    const double dt, // ステップ幅
+    const double start, const double end // 積分範囲
+) {
+    for (double t = start; t < end; t += dt) {
+        const double fx1 = fx(x, y, z);
+        const double fy1 = fy(x, y, z);
+        const double fz1 = fz(x, y, z);
+
+        const double fx2 = fx(x + fx1 * dt / 2.0, y + fy1 * dt / 2.0, z + fz1 * dt / 2.0);
+        const double fy2 = fy(x + fx1 * dt / 2.0, y + fy1 * dt / 2.0, z + fz1 * dt / 2.0);
+        const double fz2 = fz(x + fx1 * dt / 2.0, y + fy1 * dt / 2.0, z + fz1 * dt / 2.0);
+
+        const double fx3 = fx(x + fx2 * dt / 2.0, y + fy2 * dt / 2.0, z + fz2 * dt / 2.0);
+        const double fy3 = fy(x + fx2 * dt / 2.0, y + fy2 * dt / 2.0, z + fz2 * dt / 2.0);
+        const double fz3 = fz(x + fx2 * dt / 2.0, y + fy2 * dt / 2.0, z + fz2 * dt / 2.0);
+
+        const double fx4 = fx(x + fx3 * dt, y + fy3 * dt, z + fz3 * dt);
+        const double fy4 = fy(x + fx3 * dt, y + fy3 * dt, z + fz3 * dt);
+        const double fz4 = fz(x + fx3 * dt, y + fy3 * dt, z + fz3 * dt);
+
+        x += (fx1 + 2 * fx2 + 2 * fx3 + fx4) * dt / 6.0;
+        y += (fy1 + 2 * fy2 + 2 * fy3 + fy4) * dt / 6.0;
+        z += (fz1 + 2 * fz2 + 2 * fz3 + fz4) * dt / 6.0;   
+    }
+}
+        \end{lstlisting}
+
+    \subsection{課題8}
+        \begin{lstlisting}[caption=4次ルンゲ・クッタ法による$\bar{R}(K)$の計算]
+#include <cmath>
+#include <vector>
+
+double runge_kutta(
+    const double (*f)(double, int, double, int, double, double), // 被積分関数
+    std::vector<double> x, // 初期値
+    const double K, // 定数
+    const int N, // 元数
+    const double dt, // ステップ幅
+    const double start, const double end, // 積分範囲
+    double calc_t // 平均の計算開始時刻
+) {
+    double Rx, Ry;
+    double Rsum = 0;
+    for (double t = start; t < end; t += dt) {
+        Rx = Ry = 0;
+        for (int i = 0; i < N; i++) {
+            Rx += cos(x[i]) / N;
+            Ry += sin(x[i]) / N;
+        }
+
+        for (int i = 0; i < N; i++) {
+            const double f1 = f(x[i], i, K, N, Rx, Ry);
+            const double f2 = f(x[i] + f1 * dt / 2.0, i, K, N, Rx, Ry);
+            const double f3 = f(x[i] + f2 * dt / 2.0, i, K, N, Rx, Ry);
+            const double f4 = f(x[i] + f3 * dt, i, K, N, Rx, Ry);
+
+            x[i] += (f1 + 2 * f2 + 2 * f3 + f4) * dt / 6.0;
+        }
+
+        if (t >= calc_t) {
+            Rsum += sqrt(Rx * Rx + Ry * Ry) * dt;
+        }
+    }
+
+    return Rsum / (end - calc_t);
+}
+
+void calculate_Rbar(
+    int N // 元数
+) {
+    const double start = 0, end = 100, calc_t = 50, dt = 0.01;
+    std::vector<double> x(N);
+    for (int i = 0; i < N; i++) {
+        const double y = 2 * M_PI / N * (i - 1);
+        x[i] = y + 0.01 * sin(y);
+    }
+
+    for (double K = 1; K <= 5 + 1e-7; K += 0.1)
+        const double R = runge_kutta(f, x, K, N, dt, start, end, calc_t);
+}
+        \end{lstlisting}
 
 \newpage
 \addcontentsline{toc}{section}{参考文献}
