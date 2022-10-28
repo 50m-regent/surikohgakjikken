@@ -115,7 +115,6 @@
         オイラー法やクランク・ニコルソン法では、$u_{n+1}$を求める際に$u_{n}$のみを用いるため、
         一段法と呼ばれる。対して、$u_{n-1}$や$u_{n-2}$など、
         より過去の値も用いて精度を高めるアルゴリズムを多段法と呼ぶ。
-
         過去に計算した$N+1$個の点
         を用いてラグランジュ補間により式(\ref{equ:diff})を満たす$f(t, u(t))$を
         $N$次多項式で構成することを考える。
@@ -125,7 +124,7 @@
             すでに計算した2点
             $(t_n, f(t_n, u_n))$,
             $(t_{n-1}, f(t_{n-1}, u_{n-1}))$
-            を用いてラグランジュ補完を行うと、
+            を用いてラグランジュ補間を行うと、
             \begin{equation*}
                 f(t, u(t)) \approx \frac{t - t_{n-1}}{t_n - t_{n-1}}f(t_n, u_n) + \frac{t - t_n}{t_{n-1} - t_n}f(t_{n-1}, u_{n-1})
             \end{equation*}
@@ -141,9 +140,10 @@
                 &=& \frac{\Delta t}{2} \{3f(t_n, u_n) - f(t_{n-1}, u_{n-1})\}
             \end{eqnarray*}
             よって、
-            \begin{equation}
-                u_{n+1} \approx u_n + \frac{\Delta t}{2} \{3f(t_n, u_n) - f(t_{n-1}, u_{n-1})\}
-            \end{equation}
+            \begin{eqnarray}
+                u_{n+1} &=& u_n + \int^{t_{n+1}}_{t_n} f(t, u(t)) dt \nonumber \\
+                &\approx& u_n + \frac{\Delta t}{2} \{3f(t_n, u_n) - f(t_{n-1}, u_{n-1})\}
+            \end{eqnarray}
             となる。これを2次アダムス・バッシュフォース法と呼ぶ。
 
         \subsubsection{$N=2$の場合}
@@ -573,35 +573,23 @@
             \begin{equation*}
                 \Delta_n(t) \coloneqq \|\bm{x}_0(t) - \bm{x}_n(t)\|
             \end{equation*}
-            を定義する。$\Delta_n(t)$のグラフを作成し、
-            これが漸近値に至る少し前の時間帯の関数形を調べる。
+            を定義する。これが漸近値に至る少し前の時間帯の関数形を調べる。
 
         \subsubsection{結果}
-            $\Delta_n(t)$の計算結果を図\ref{fig:7halflog}, \ref{fig:7fulllog}に示す。
+            $\Delta_n(t)$の計算結果を図\ref{fig:7}に示す。
             \begin{figure}[h]
-                \begin{minipage}{0.49\hsize}
-                    \centering
-                    \includegraphics[width=1\hsize]{kadai7/2halflog.eps}
-                    \caption{
-                        $\Delta_n(t)$の計算結果
-                        (片対数グラフ)
-                    }
-                    \label{fig:7halflog}
-                \end{minipage}
-                \begin{minipage}{0.49\hsize}
-                    \centering
-                    \includegraphics[width=1\hsize]{kadai7/2fulllog.eps}
-                    \caption{
-                        $\Delta_n(t)$の計算結果
-                        (両対数グラフ)
-                    }
-                    \label{fig:7fulllog}
-                \end{minipage}
+                \centering
+                \includegraphics[width=1\hsize]{kadai7/2.eps}
+                \caption{
+                    $\Delta_n(t)$の計算結果。
+                    左が片対数、右が両対数グラフ
+                }
+                \label{fig:7}
             \end{figure}
 
         \subsubsection{考察}
             $\Delta_n(t)$の関数形を調べるために、
-            冪関数と指数関数をそれぞれ図\ref{fig:7halflog}, \ref{fig:7fulllog}
+            冪関数と指数関数をそれぞれ図\ref{fig:7}
             に重ねたグラフを図\ref{fig:7halflog_power}〜\ref{fig:7fulllog_exp}に示す。
             \begin{figure}[h]
                 \begin{minipage}{0.49\hsize}
@@ -717,28 +705,18 @@
 
             以上を踏まえると、$x_i$の分散が大きいほど$R$は0に近づき、
             分散が小さいほど$R$は1に近づくことがわかる。
-            図\ref{fig:k1}, \ref{fig:k3}に$N=10^2$について、
+            図\ref{fig:k}に$N=10^2$について、
             $K=1, 3$のときの単位円上の$N$点$(\cos x_i(100), \sin x_i(100))$
             の分布を示す。
             \begin{figure}[h]
-                \begin{minipage}{0.49\hsize}
-                    \centering
-                    \includegraphics[width=1\hsize]{kadai8/K1.eps}
-                    \caption{
-                        $K=1$のときの$x_i \ (i\in 1, 2, \cdots,N)$の分布
-                    }
-                    \label{fig:k1}
-                \end{minipage}
-                \begin{minipage}{0.49\hsize}
-                    \centering
-                    \includegraphics[width=1\hsize]{kadai8/K3.eps}
-                    \caption{
-                        $K=3$のときの$x_i \ (i\in 1, 2, \cdots,N)$の分布
-                    }
-                    \label{fig:k3}
-                \end{minipage}
+                \centering
+                \includegraphics[width=1\hsize]{kadai8/k.eps}
+                \caption{
+                    $x_i$の分布。左が$K=1$, 右が$K=3$
+                }
+                \label{fig:k}
             \end{figure}
-            図\ref{fig:8}と図\ref{fig:k1}, \ref{fig:k3}を見比べると、
+            図\ref{fig:8}と図\ref{fig:k}を見比べると、
             $\bar{R}\approx 0$である$K=1$のときは実際に$x_i$の分散が大きく、
             逆に$\bar{R}$が増加している$K=3$のときは$x_i$の分散が小さいことがわかる。
 

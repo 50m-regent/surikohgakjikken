@@ -35,7 +35,7 @@ def plot_exp(ts2, us2, ts4, us4, ts6, us6):
     
     plt.yscale('log')
     
-    plt.xlim(0, 100)
+    plt.xlim(0, 40)
     plt.ylim(10 ** -6.5, 100)
     
     plt.legend()
@@ -44,8 +44,7 @@ def plot_exp(ts2, us2, ts4, us4, ts6, us6):
     plt.savefig('2halflog_exp.eps')
     
     plt.xscale('log')
-    plt.legend(ncol=2)
-    plt.xlim(0.01, 100)
+    plt.xlim(1, 40)
     plt.savefig('2fulllog_exp.eps')
 
 
@@ -67,7 +66,7 @@ def plot_power(ts2, us2, ts4, us4, ts6, us6):
     
     plt.yscale('log')
     
-    plt.xlim(0, 100)
+    plt.xlim(0, 40)
     plt.ylim(10 ** -6.5, 100)
     
     plt.legend()
@@ -76,8 +75,7 @@ def plot_power(ts2, us2, ts4, us4, ts6, us6):
     plt.savefig('2halflog_power.eps')
     
     plt.xscale('log')
-    plt.legend(ncol=2)
-    plt.xlim(0.01, 100)
+    plt.xlim(1, 40)
     plt.savefig('2fulllog_power.eps')
 
 
