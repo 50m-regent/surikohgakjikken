@@ -66,10 +66,181 @@
 \clearpage
 
 \section{目的}
-    
+    本実験では数値積分を扱う。
+    数値積分は理学・工学のさまざまな場面で現れるが、
+    これを解析的に解くことは特別な場合を除いて非常に困難であるため、
+    本実験では関数補間を用いて近似的に積分の数値解を得ることを目標とする。
 
 \section{原理}
-    
+    式(\ref{equ:int})に示す積分を解くことを考える。
+    本節では、のちに行う課題で用いる積分公式について記す。
+
+    \begin{equation}
+        \int_a^bf(x)\mathrm{d}x \label{equ:int}
+    \end{equation}
+
+    \subsection{Newton-Cotes積分公式}
+        Newton-Cotes積分公式は最も基本的な積分公式である。
+        これは、Lagrange補間を用いるため、
+        それについても以下に記す。
+
+        \subsubsection{Lagrange補間}
+            $f(x)$を$n-1$次多項式$P(x)$で表すことを考える。
+            $x\in[a,b]$から$n$点$x_1,x_2,\cdots,x_n$を選び、
+            $P(x_i)=f(x_i)$となるように$P(x)$を構成する。
+            $P(x)$の$i$次の係数を$a_i$とすると、
+            各$i=0,1,\cdots,n-1$について、
+            \begin{equation*}
+                a_0 + a_1x_i + \cdots + a_{n-1}x_i^{n-1} = f(x_i)
+            \end{equation*}
+            を満たせば良い。これは次のように書き直せる。
+            \begin{equation*}
+                \begin{pmatrix}
+                    1 & x_1 & \cdots & x_1^{n-1} \\
+                    1 & x_2 & \cdots & x_2^{n-1} \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    1 & x_n & \cdots & x_n^{n-1}
+                \end{pmatrix}\begin{pmatrix}
+                    a_0 \\
+                    a_1 \\
+                    \vdots \\
+                    a_{n-1}
+                \end{pmatrix} = \begin{pmatrix}
+                    f(x_1) \\
+                    f(x_2) \\
+                    \vdots \\
+                    f(x_n)
+                \end{pmatrix}
+            \end{equation*}
+            これの係数行列の行列式は、
+            \begin{equation*}
+                \begin{vmatrix}
+                    1 & x_1 & \cdots & x_1^{n-1} \\
+                    1 & x_2 & \cdots & x_2^{n-1} \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    1 & x_n & \cdots & x_n^{n-1}
+                \end{vmatrix} = \prod_{i=1}^n\prod_{j=i+1}^n(x_i-x_j)\neq 0
+            \end{equation*}
+            となるため、条件を満たす$P(x)$は一意に定まることがわかり、それは
+            \begin{equation}
+                P(x) = \sum_{i=1}^n\frac{\displaystyle\prod_{j=1,j\neq i}^n (x-x_j)}{\displaystyle\prod_{j=1,j\neq i}^n (x_i-x_j)}f(x_i)
+            \end{equation}
+            と書ける。
+
+        \subsubsection{Newton-Cotes積分公式}
+            分点$\{x_i\}$を用いてLagrange補間を行い、
+            式(\ref{equ:int})の積分値を計算する。
+            式(\ref{equ:int})を書き直すと、
+            \begin{eqnarray*}
+                \int_a^bf(x)\mathrm{d}x &=& \int_a^bP(x)\mathrm{d}x \\
+                &=& \int_a^b\sum_{i=1}^n\frac{\displaystyle\prod_{j=1,j\neq i}^n (x-x_j)}{\displaystyle\prod_{j=1,j\neq i}^n (x_i-x_j)}f(x_i)\mathrm{d}x \\
+                &=& \sum_{i=1}^nf(x_i)\int_a^b\frac{\displaystyle\prod_{j=1,j\neq i}^n (x-x_j)}{\displaystyle\prod_{j=1,j\neq i}^n (x_i-x_j)}\mathrm{d}x
+            \end{eqnarray*}
+            を得る。これをNewton-Cotes積分公式と呼ぶ。
+            この公式は、分点の取り方によって変化するが、
+            本実験では以下に示す3種類を使う。
+
+            \paragraph{中点公式}
+                一つの分点$x_1 = \displaystyle\frac{a + b}{2}$のみを考える。
+
+                $\displaystyle\int_a^b\frac{\displaystyle\prod_{j=1,j\neq i}^n (x-x_j)}{\displaystyle\prod_{j=1,j\neq i}^n (x_i-x_j)}\mathrm{d}x=\int_a^b\mathrm{d}x=b-a$となるので、
+                $\displaystyle\int_a^bf(x)\mathrm{d}x\approx(b-a)f(x_1)$と近似できる。
+                これを中点公式という。
+
+            \paragraph{台形公式}
+                二つの分点$x_1 = a, x_2 = b$を考える。
+
+                $\displaystyle\int_a^b\frac{\displaystyle\prod_{j=1,j\neq i}^n (x-x_j)}{\displaystyle\prod_{j=1,j\neq i}^n (x_i-x_j)}\mathrm{d}x=\int_a^b\frac{1}{2}\mathrm{d}x=\frac{b-a}{2}$となるので、
+                $\displaystyle\int_a^bf(x)\mathrm{d}x\approx\frac{b-a}{2}\{f(x_1)+f(x_2)\}$と近似できる。
+                これを台形公式という。
+
+            \paragraph{Simpson公式}
+                三つの分点$x_1 = a, x_2 = \displaystyle\frac{b-a}{2}, x_3 = b$を考える。
+
+                \begin{equation*}
+                    \int_a^b\frac{\displaystyle\prod_{j=1,j\neq i}^n (x-x_j)}{\displaystyle\prod_{j=1,j\neq i}^n (x_i-x_j)}\mathrm{d}x=\begin{cases}
+                        \displaystyle\frac{b-a}{6} & i=1,3 \\
+                        \displaystyle\frac{2}{3}(b-a) & i=2
+                    \end{cases}
+                \end{equation*}
+                となるので、
+                $\displaystyle\int_a^bf(x)\mathrm{d}x\approx\frac{b-a}{6}\{f(x_1)+4f(x_2)+f(x_3)\}$と近似できる。
+                これを台形公式という。
+
+        \subsubsection{複合公式}
+            前節で述べた公式は、$x\in[a,b]$において$f(x)$を定数、一次関数、二次関数で近似して得ているため、
+            その実際の値との誤差は$|b-a|$に比例して大きくなってしまう。
+            そこで、実際の積分範囲を十分に細かく分割し、
+            それぞれに積分公式を用いて計算を行うのが一般的である。
+            
+            $x_i=a+ih \ \left(i=0,1,\cdots,n, \ \displaystyle h=\frac{b-a}{n}\right)$として、
+            $[a_i,a_{i+1}]$にそれぞれの積分公式を適用すると、次のように書ける。
+
+            \paragraph{中点複合公式}
+                \begin{equation}
+                    \int_a^bf(x)\mathrm{d}x\approx h\sum_{i=0}^{n-1}f\left(\frac{x_i+x_{i+1}}{2}\right)
+                \end{equation}
+
+            \paragraph{台形複合公式}
+                \begin{equation}
+                    \int_a^bf(x)\mathrm{d}x\approx\frac{h}{2}\left\{f(x_0) + \sum_{i=1}^{n-1}f(x_i) + f(x_n)\right\}
+                \end{equation}
+
+            \paragraph{Simpson複合公式}
+                \begin{equation}
+                    \int_a^bf(x)\mathrm{d}x\approx\frac{h}{6}\left\{f(x_0) + \sum_{i=1}^{n-1}f(x_i) + f(x_n) + 4\sum_{i=0}^{n-1}f\left(\frac{x_i+x_{i+1}}{2}\right)\right\}
+                \end{equation}
+
+    \subsection{Gauss型積分公式}
+        二つの関数$f(x),g(x)$の内積$(f,g)$を以下で定義する。
+        \begin{equation*}
+            (f,g)=\int_{-1}^1f(x)g(x)\mathrm{d}x
+        \end{equation*}
+        これが0となるとき、二つの関数は直交するという。
+        任意の$n-1$次多項式と直交する$n$次式多項式$P_n(x)$が存在することが知られ、
+        これをLegendre多項式と呼ぶ。
+
+        $f(x)$を$P_n(x)$で割った商を$Q(x)$,余りを$R(x)$とすると、
+        \begin{equation*}
+            f(x) = P_n(x)Q(x)+R(x)
+        \end{equation*}
+        と書ける。ここで、$Q(x),R(x)$は$n-1$次多項式であることに注意する。
+        $a=-1,b=1$として式(\ref{equ:int})を解くことを考えると、
+        \begin{eqnarray*}
+            \int_{-1}^1f(x)\mathrm{d}x &=& \int_{-1}^1\{P_n(x)Q(x)+R(x)\}\mathrm{d}x \\
+            &=& \int_{-1}^1R(x)\mathrm{d}x \ (\because P_n(x)とQ(x)は直交)
+        \end{eqnarray*}
+        と書ける。
+        ここで、$R(x)$のLagrange補間は$R(x)$に等しいため、
+        \begin{equation*}
+            \int_{-1}^1R(x)\mathrm{d}x = \sum_{i=1}^nR(x_i)\int_{-1}^1\frac{\displaystyle\prod_{j=1,j\neq i}^n (x-x_j)}{\displaystyle\prod_{j=1,j\neq i}^n (x_i-x_j)}\mathrm{d}x
+        \end{equation*}
+        となり、$\{x_i\}$に$P_n(x)$の零点を用いると、上の結果と合わせて、
+        \begin{equation*}
+            \int_{-1}^1f(x)\mathrm{d}x = \sum_{i=1}^nf(x_i)\int_{-1}^1\frac{\displaystyle\prod_{j=1,j\neq i}^n (x-x_j)}{\displaystyle\prod_{j=1,j\neq i}^n (x_i-x_j)}\mathrm{d}x
+        \end{equation*}
+        を得る。これをGauss型積分公式と呼ぶ。
+        これは積分範囲が$[-1,1]$であるが、
+        適切に変数変換を行うことで任意の範囲で積分を行うことが可能である。
+
+        \subsubsection{複合公式}
+            Gauss型積分公式も、一般的に複合公式を作成して計算を行う。
+            $x_i=a+ih \ \left(i=0,1,\cdots,n, \ \displaystyle h=\frac{b-a}{n}\right)$
+            とすると、
+            \begin{equation*}
+                \int_a^bf(x)\mathrm{d}x=\sum_{i=0}^{n-1}\int_{x_i}^{x_{i+1}}f(x)\mathrm{d}x
+            \end{equation*}
+            である。$\displaystyle y = 2\frac{x-x_i}{x_{i+1}-x_i}-1$と変数変換を行うと、
+            $[x_i,x_{i+1}]$は$[-1,1]$となり、Gauss型積分公式を適用できる。
+            $N$次Legendre多項式を用いたGauss型積分公式を適用すると、
+            \begin{eqnarray}
+                \int_a^bf(x)\mathrm{d}x &=& \sum_{i=0}^{n-1}\int_{x_i}^{x_{i+1}}f(x)\mathrm{d}x \\
+                &=& \sum_{i=0}^{n-1}\int_{-1}^{1}f\left(\frac{(y+1)(x_{i+1}-x_i)}{2}+x_i\right)\frac{x_{i+1}-x_i}{2}\mathrm{d}y \\
+                &\approx& \sum_{i=0}^{n-1}\sum_{m=1}^{N}w_mf\left(\frac{(y_m+1)(x_{i+1}-x_i)}{2}+x_i\right)\frac{x_{i+1}-x_i}{2}
+            \end{eqnarray}
+            と書ける。
+            ここで、$y_m$はLegendre多項式の$m$番目の零点、
+            $w_m$は$N$次Lagrange補間の$m$次の係数である。
 
 \section{課題}
     

@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.141592653-p4.0.0-220214-2.6 (utf8.euc) (TeX Live 2022) (preloaded format=platex 2022.10.3)  28 NOV 2022 18:16
+This is e-pTeX, Version 3.141592653-p4.0.0-220214-2.6 (utf8.euc) (TeX Live 2022) (preloaded format=platex 2022.10.3)  3 DEC 2022 18:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -323,20 +323,46 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 (Font)              scaled to size 13.83836pt on input line 65.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 13.83836pt on input line 65.
- (./report.toc)
+ (./report.toc
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 3.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 4.805pt on input line 3.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 3.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 3.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 3.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 3.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 4.805pt on input line 3.
+)
 \tf@toc=\write3
 \openout3 = `report.toc'.
 
- [1] [2
+ [1]
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 11.53198pt on input line 82.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 11.53198pt on input line 82.
+ [2
 
-] [3] (./report.aux) ) 
+] [3] [4] [5] [6] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 5199 strings out of 478724
- 80568 string characters out of 5858392
- 574592 words of memory out of 5000000
- 23597 multiletter control sequences out of 15000+600000
- 476999 words of font info for 66 fonts, out of 8000000 for 9000
+ 5265 strings out of 478724
+ 81660 string characters out of 5858392
+ 588592 words of memory out of 5000000
+ 23635 multiletter control sequences out of 15000+600000
+ 482729 words of font info for 93 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 55i,5n,62p,242b,265s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 55i,9n,62p,242b,265s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on report.dvi (4 pages, 1768 bytes).
+Output written on report.dvi (7 pages, 18140 bytes).
