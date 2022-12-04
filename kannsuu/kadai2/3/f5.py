@@ -30,8 +30,13 @@ if __name__ == '__main__':
     for algorithm in ['Midpoint', 'Trapezoid', 'Simpson']:
         ts, us = readfile(f'f5{algorithm}.txt')
         pyplot.plot(ts, numpy.abs(us - (numpy.exp(5) - numpy.exp(-5)) / 5), label=f'{algorithm}', marker=markers[algorithm])
+        
+    n = numpy.logspace(0, 3, 10000)
+    pyplot.plot(n, 20 * n ** -3.5, label='$\Theta(n^{-3.5})$', linestyle='--', color='black')
+    pyplot.plot(n, 80 * n ** -2, label='$\Theta(n^{-2})$', linestyle=':', color='black')
     
     pyplot.xlim(2**start, 2**end)
+    pyplot.ylim(10**-5, 10**2.5)
     
     pyplot.xlabel('$n$')
     pyplot.ylabel('$E$', rotation=0)

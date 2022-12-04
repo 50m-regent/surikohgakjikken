@@ -3,7 +3,7 @@ import numpy
 
 
 pyplot.rcParams["text.usetex"] = True
-pyplot.rcParams["font.size"] = 12
+pyplot.rcParams["font.size"] = 18
 
 
 def readfile(path):
@@ -31,6 +31,10 @@ if __name__ == '__main__':
     for i in [1, 2, 3]:
         ts, us = readfile(f'{i}-2.txt')
         pyplot.plot(ts, [numpy.abs(u - real) for u in us], label=f'Method {i}', marker=markers[i])
+        
+    n = numpy.logspace(0, 3, 10000)
+    pyplot.plot(n, n ** -0.5, label='$\Theta(n^{-0.5})$', linestyle=':', color='black')
+    pyplot.plot(n, n ** -1, label='$\Theta(n^{-1})$', linestyle='--', color='black')
     
     pyplot.xlim(2**start, 2**end)
     

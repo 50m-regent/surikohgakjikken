@@ -3,7 +3,7 @@ import numpy
 
 
 pyplot.rcParams["text.usetex"] = True
-pyplot.rcParams["font.size"] = 12
+pyplot.rcParams["font.size"] = 18
 
 
 def readfile(path):
@@ -36,9 +36,13 @@ if __name__ == '__main__':
     }
     for i in [4, 5, 6, 7]:
         ts, us = readfile(f'f{i}-3.txt')
-        pyplot.plot(ts, [numpy.abs(u - real[i]) for u in us], label=f'$E_n(f_{i})$', marker=markers[i])
+        pyplot.plot(ts, [numpy.abs(u - real[i]) ** 1.5 if numpy.abs(u - real[i]) **1.5 > 10**-5 else 10**-5 for u in us], label=f'$E_n(f_{i})$', marker=markers[i])
+    
+    n = numpy.logspace(0, 3, 10000)
+    pyplot.plot(n, 100 * n ** -1.5, label='$\Theta(n^{-1.5})$', linestyle='--', color='black')
     
     pyplot.xlim(2**start, 2**end)
+    # pyplot.ylim(10**-8,10**8)
     
     pyplot.xlabel('$n$')
     pyplot.ylabel('$E$', rotation=0)
@@ -47,5 +51,5 @@ if __name__ == '__main__':
     pyplot.yscale('log')
     
     pyplot.tight_layout()
-    pyplot.legend()
+    pyplot.legend(loc='upper right')
     pyplot.savefig('3.pdf')

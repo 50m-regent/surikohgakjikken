@@ -13,4 +13,23 @@
 \contentsline {subsection}{\numberline {2.2}Gauss型積分公式}{4}{}%
 \contentsline {subsubsection}{\numberline {2.2.1}複合公式}{5}{}%
 \contentsline {section}{\numberline {3}課題}{5}{}%
-\contentsline {section}{参考文献}{6}{}%
+\contentsline {subsection}{\numberline {3.1}課題4.2}{5}{}%
+\contentsline {subsubsection}{\numberline {3.1.1}}{5}{}%
+\contentsline {paragraph}{結果・考察}{7}{}%
+\contentsline {subsubsection}{\numberline {3.1.2}}{7}{}%
+\contentsline {paragraph}{結果・考察}{11}{}%
+\contentsline {subsubsection}{\numberline {3.1.3}}{11}{}%
+\contentsline {paragraph}{結果・考察}{11}{}%
+\contentsline {subsection}{\numberline {3.2}課題 4.3}{12}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}}{12}{}%
+\contentsline {paragraph}{結果・考察}{13}{}%
+\contentsline {subsubsection}{\numberline {3.2.2}}{13}{}%
+\contentsline {paragraph}{結果・考察}{15}{}%
+\contentsline {subsection}{\numberline {3.3}課題4.4}{15}{}%
+\contentsline {subsubsection}{\numberline {3.3.1}}{16}{}%
+\contentsline {subsubsection}{\numberline {3.3.2}}{16}{}%
+\contentsline {subsection}{\numberline {3.4}}{17}{}%
+\contentsline {subsection}{\numberline {3.5}}{19}{}%
+\contentsline {subsection}{\numberline {3.6}}{20}{}%
+\contentsline {paragraph}{結果・考察}{23}{}%
+\contentsline {section}{参考文献}{25}{}%

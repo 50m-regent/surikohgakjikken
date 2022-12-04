@@ -30,6 +30,10 @@ if __name__ == '__main__':
     for algorithm in ['Midpoint', 'Trapezoid', 'Simpson']:
         ts, us = readfile(f'f4{algorithm}.txt')
         pyplot.plot(ts, numpy.abs(us - numpy.log(2)), label=f'{algorithm}', marker=markers[algorithm])
+        
+    n = numpy.logspace(0, 3, 10000)
+    pyplot.plot(n, 0.5 * n ** -1, label='$\Theta(n^{-1})$', linestyle='--', color='black')
+    pyplot.plot(n, 0.1 * n ** -2, label='$\Theta(n^{-2})$', linestyle=':', color='black')
     
     pyplot.xlim(2**start, 2**end)
     
